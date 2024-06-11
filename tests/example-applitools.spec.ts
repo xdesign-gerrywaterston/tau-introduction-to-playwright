@@ -22,7 +22,7 @@ let eyes: Eyes;
 let URL = 'https://demo.applitools.com';
 // let URL = 'https://demo.applitools.com/index_v2.html';
 
-test.beforeAll(async() => {
+test.beforeAll(async () => {
 
   if (USE_ULTRAFAST_GRID) {
     Runner = new VisualGridRunner({ testConcurrency: 5 });
@@ -32,7 +32,7 @@ test.beforeAll(async() => {
   }
 
   const runnerName = (USE_ULTRAFAST_GRID) ? 'Ultrafast Grid' : 'Classic runner';
-  Batch = new BatchInfo({name: `ACME Project - ${runnerName}`});
+  Batch = new BatchInfo({ name: `ACME Project - ${runnerName}` });
 
   Config = new Configuration();
   Config.setBatch(Batch);
@@ -47,22 +47,22 @@ test.beforeAll(async() => {
 });
 
 test.beforeEach(async ({ page }) => {
-    eyes = new Eyes(Runner, Config);
-    await eyes.open(
-      page,
-      'ACME Bank',
-      test.info().title,
-      { width: 1024, height: 768 }
-    );
+  eyes = new Eyes(Runner, Config);
+  await eyes.open(
+    page,
+    'ACME Bank',
+    test.info().title,
+    { width: 1024, height: 768 }
+  );
 });
 
 test.afterEach(async () => {
-    await eyes.close();
+  await eyes.close();
 });
 
-test.afterAll(async() => {
-    const results = await Runner.getAllTestResults();
-    console.log('Visual test results', results);
+test.afterAll(async () => {
+  const results = await Runner.getAllTestResults();
+  console.log('Visual test results', results);
 });
 
 test.describe('ACME Bank', () => {
