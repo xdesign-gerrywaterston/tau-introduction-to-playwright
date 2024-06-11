@@ -18,7 +18,7 @@ test('get started link', async ({ page }) => {
 });
 
 /**
- * MAke sure the browser window is wide enough to show the dropdowns at the top.
+ * Make sure the browser window is wide enough to show the dropdowns at the top.
  * 
  * 1. Open the page
  * 2. Click on Get Started
@@ -31,7 +31,7 @@ test('get started link', async ({ page }) => {
  * Playwright is distributed as a set of Maven modules. The easiest way to use it is to add one dependency to your project's pom.xml as described below. If you're not familiar with Maven please refer to its documentation.
 */
 
-test.only('check Java page', async ({ page }) => {
+test('check Java page', async ({ page }) => {
   // 1.
   page.goto('https://playwright.dev');
   // 2.
