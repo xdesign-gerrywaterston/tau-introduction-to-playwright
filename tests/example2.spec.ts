@@ -1,22 +1,30 @@
 import { test, expect, type Page } from '@playwright/test';
+import { HomePage } from '../pages/home-page';
 
 // AAA
 //POM - page object model
 
 const URL = 'https://playwright.dev/';
+let homePage: HomePage;
 
 test.beforeEach(async ({ page }) => {
   await page.goto(URL);
+  homePage = new HomePage(page);
 });
 
 async function clickGetStarted(page: Page) {
-  await page.getByRole('link', { name: 'Get started' }).click();
+  //await page.getByRole('link', { name: 'Get started' }).click();
+  await homePage.clickGetStarted();
+  // now using the POM created in pages/home-pages.ts
 }
 
 test.describe('Playwright website', () => {
 
-  test('has title', async ({ page }) => {
-    await expect(page).toHaveTitle(/Playwright/);
+  test('has title', async () => {
+    // await expect(page).toHaveTitle(/Playwright/);
+    // replace with:
+    await homePage.assertPageTitle();
+    // calls line 12. from class HomePage created in home-page.ts
   });
 
   test('get started link', async ({ page }) => {
