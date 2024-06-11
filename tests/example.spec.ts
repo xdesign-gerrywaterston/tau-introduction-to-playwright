@@ -39,7 +39,7 @@ test('check Java page', async ({ page }) => {
   // 3.
   await page.getByRole('button', { name: 'Node.js' }).hover();
   // 4.  
-  await page.getByText('Java').click();
+  await page.getByText('Java', { exact: true }).click();
   // 5.
   await expect(page).toHaveURL('https://playwright.dev/java/docs/intro');
   // 6.
